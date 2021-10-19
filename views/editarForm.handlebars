@@ -1,23 +1,18 @@
-<h1>Aluno código {{cpf}}</h1>
+<h1>Covid_19 código {{id}}</h1>
 
-<form action="/editarReq/{{cpf}}" method="POST">
-<div class="mb-3">
-				<label class="form-label">Nome</label>
-				<input class="form-control" type="text" name="nome">			
-</div>
-<div class="mb-3">
-				<label class="form-label">CPF</label>
-				<input class="form-control" type="text" name="cpf">
-</div>
-<div class="mb-3">
-				<label class="form-label">Sexo</label>
-				<input class="form-control" type="text" name="sexo">
-</div>
-<div class="mb-3">
-				<label class="form-label">Quantidade Materias</label>
-				<input class="form-control" type="text" name="qtd_materias">
-</div>
+<form action="/editarReq/{{id}}" method="POST">
+    <div class="mb-3">
+        <label class="form-label">Data</label>
+        <input class="form-control" type="date" name="data">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Hora</label>
+        <input class="form-control" type="time" name="hora">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Nota</label>
+        <input class="form-control" type="text" name="nota">
+    </div>
 
-
-				 <button type="submit" class="btn btn-primary">Atualizar</button>
+    <button type="submit" class="btn btn-primary">Criar</button>
 </form>

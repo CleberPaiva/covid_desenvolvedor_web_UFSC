@@ -1,7 +1,8 @@
 var sequelize = require("sequelize")
 
-var conexao = new sequelize ("u883923978_alunos2021", "u883923978_cleberpaiva","Alunos2021",{
+var conexao = new sequelize ("u883923978_covid_ufsc", "u883923978_covid_ufsc","Covid2019",{
 				host: "sql487.main-hosting.eu",
+                //port: "3306",
 				dialect: "mysql"
 })
 

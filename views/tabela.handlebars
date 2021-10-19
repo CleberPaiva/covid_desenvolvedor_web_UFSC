@@ -1,22 +1,52 @@
+</br>
 <a href="/cadastrar"><button type="button" class="btn btn-success">Novo</button></a>
 <p>
-<p>Bem vindo!</p>
+</br>    
+<p>Bem vindo(a)!</p>
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">CPF</th>
-            <th scope="col">Sexo</th>
-			<th scope="col">Quantidade Materias</th>
+            <th scope="col">Data Notificação</th>
+            <th scope="col">Data 1º Sintomas</th>
+            <th scope="col">Data Teste</th>
+            <th scope="col">Data Óbito</th>
+            <th scope="col">Data Nascimento</th>
+            <th scope="col">Faixa Etaria</th>
+			<th scope="col">Sexo</th>
+            <th scope="col">Raça</th>
+            <th scope="col">Bairro</th>
+            <th scope="col">Municipio</th>
+            <th scope="col">Centro Saude</th>
+            <th scope="col">Tipo Teste</th>
+            <th scope="col">Dor Garganta</th>
+            <th scope="col">Dispneia</th>
+            <th scope="col">Febre</th>
+            <th scope="col">Tosse</th>
+            <th scope="col">Óbito</th>
+            <th scope="col">UTI</th>
         </tr>
     </thead>
     <tbody>
-        {{#each aluno}}
+        {{#each covid}}
         <tr>
-            <th>{{nome}}</th>
-            <td>{{cpf}}</td>
+            <th>{{data_notificacao}}</th>
+            <th>{{data_primeiros_sintomas}}</th>
+            <th>{{data_teste}}</th>
+            <th>{{data_obito}}</th>
+            <th>{{data_nascimento}}</th>
+            <td>{{faixa_idade}}</td>
             <td>{{sexo}}</td>
-			<td>{{qtd_materias}}</td>
+			<td>{{raca}}</td>
+            <td>{{bairro}}</td>
+            <td>{{municipio_residencia}}</td>
+            <td>{{centro_saude}}</td>
+            <td>{{tipo_teste}}</td>
+            <td>{{dor_garganta}}</td>
+            <td>{{dispneia}}</td>
+            <td>{{febre}}</td>
+            <td>{{tosse}}</td>
+            <td>{{obito}}</td>
+            <td>{{internado_uti}}</td>
             <td>
                 <a href="/editar/{{cpf}}"><button type="submit" class="btn btn-warning">Alterar</button></a>
                 <a href="/remover/{{cpf}}"><button type="submit" class="btn btn-danger">Excluir</button></a>

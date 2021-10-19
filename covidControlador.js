@@ -1,4 +1,4 @@
-var aluno = require("./aluno")
+var covid = require("./covid")
 var axios = require("axios")
 var qs = require("querystring")
 
@@ -6,14 +6,28 @@ var controlador = {}
 
 //inserir no banco - METODO POST:
 controlador.inserir = function(req,res){
-				aluno.create({
-								nome: req.body.nome,
-								cpf: req.body.cpf,
-								sexo: req.body.sexo,
-								qtd_materias: req.body.qtd_materias
+				covid.create({
+                        data_notificacao: req.body.data_notificacao,
+                        data_primeiros_sintomas: req.body.data_primeiros_sintomas,
+                        data_teste: req.body.data_teste,
+                        data_obito: req.body.data_obito,
+                        data_nascimento: req.body.data_nascimento,
+                        faixa_idade: req.body.faixa_idade,
+                        sexo: req.body.sexo,
+                        raca: req.body.raca,
+                        bairro: req.body.bairro,
+                        municipio_residencia: req.body.municipio_residencia,
+                        centro_saude: req.body.centro_saude,
+                        tipo_teste: req.body.tipo_teste,
+                        dor_garganta: req.body.dor_garganta,
+                        dispneia: req.body.dispneia,
+                        febre: req.body.febre,
+                        tosse: req.body.tosse,
+                        obito: req.body.obito,
+                        internado_uti: req.body.internado_uti,
 				}).then(
 								function(dados){
-												res.status(200).redirect("/aluno")
+												res.status(200).redirect("/covid")
 								}
 				).catch(
 								function(erro){
@@ -24,10 +38,10 @@ controlador.inserir = function(req,res){
 
 //buscar no banco - 1 (BUSCA ÚNICA):
 controlador.buscarUm = function(req,res){
-				aluno.findOne({
+				covid.findOne({
 								raw: true,
 								where: {
-												cpfaluno: req.params.cpf
+												id: req.params.id
 								}
 				}).then(
 								function (dados){
@@ -35,40 +49,40 @@ controlador.buscarUm = function(req,res){
 								}
 				).catch(
 								function (erro){
-												res.status(500).send("Ocorreu um erro na busca pelo aluno: " + erro)
+												res.status(500).send("Ocorreu um erro na busca pelo arquivo: " + erro)
 								}
 				)
 }
 
 //buscar no banco - 2 (BUSCA GERAL):
 controlador.buscarVarios = function (req,res){
-    aluno.findAll({
+    covid.findAll({
         raw: true
     }).then(
         function(dados){
             res.render("tabela",{
-                aluno: dados,
+                covid: dados,
                 pessoa: "Cleber"
             }
             )
         }
     ).catch(
         function(erro){
-            res.status(500).send("Erro ao buscar por aluno: "+erro)
+            res.status(500).send("Erro ao buscar por arquivo: "+erro)
         }
     )
 }
 
 //atualizar um registro no banco - MÉTODO PUT:
 controlador.atualizar = function (req,res){
-				aluno.update({
+				covid.update({
 					            nome: req.body.nome,
 								cpf: req.body.cpf,
 								sexo: req.body.sexo,
 								qtd_materias: req.body.qtd_materias
 				},{
 								where:{
-												cpf: req.params.cpf
+												id: req.params.id
 								}
 				}).then(
 								function (dados){
@@ -83,9 +97,9 @@ controlador.atualizar = function (req,res){
 
 //remover registro do banco - MÉTODO DELETE:
 controlador.remover = function(req,res){
-    aluno.destroy({
+    covid.destroy({
         where:{
-            cpf: req.params.cpf
+            id: req.params.id
         }
     }).then(
         function(dados){
@@ -93,7 +107,7 @@ controlador.remover = function(req,res){
         }
     ).catch(
         function(erro){
-            res.status(500).send("Erro ao remover um aluno: "+erro)
+            res.status(500).send("Erro ao remover um arquivo: "+erro)
         }
     )
 }
@@ -105,12 +119,12 @@ controlador.novoFormulario = function(req,res){
 
 controlador.editarFormulario = function(req,res){
     res.render("editarForm",{
-        cpf: req.params.cpf
+        id: req.params.id
     })
 }
 
 controlador.montarReqEdicao = function(req, res) {
-    axios.put("/aluno/" + req.params.cpf,
+    axios.put("/covid/" + req.params.id,
         qs.stringify({
             nome: req.body.nome,
             cpf: req.body.cpf,
@@ -127,24 +141,24 @@ controlador.montarReqEdicao = function(req, res) {
             }
         }
     ).then(function () {
-            res.status(200).redirect("/aluno")
+            res.status(200).redirect("/covid")
         })
         .catch(function (err) {
-            res.status(500).send("Erro ao editar o aluno: " + err);
+            res.status(500).send("Erro ao editar o arquivo: " + err);
         })
 }
 
 controlador.montarReqDelete = function (req, res) {
-    axios.delete('/aluno/' + req.params.cpf,{
+    axios.delete('/covid/' + req.params.id,{
         proxy:{
             host: "localhost",
             port: 8085
         }
     }).then(function () {
-            res.status(200).redirect("/aluno")
+            res.status(200).redirect("/covid")
         })
         .catch(function (err) {
-            res.status(500).send("Erro ao apagar um aluno: " + err);
+            res.status(500).send("Erro ao apagar um arquivo: " + err);
         })
 }
 

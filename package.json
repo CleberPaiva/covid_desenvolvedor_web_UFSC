@@ -1,5 +1,5 @@
 {
-  "name": "alunos",
+  "name": "covid",
   "version": "1.0.0",
   "description": "",
   "main": "banco_de_dados.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CleberPaiva/alunos"
+    "url": "git+https://github.com/CleberPaiva/covid_desenvolvedor_web_UFSC"
   },
   "author": "cleberpaiva",
   "license": "",
   "bugs": {
-    "url": "https://github.com/CleberPaiva/alunos/issues"
+    "url": "https://github.com/CleberPaiva/covid_desenvolvedor_web_UFSC/issues"
   },
-  "homepage": "https://github.com/CleberPaiva/alunos#readme",
+  "homepage": "https://github.com/CleberPaiva/covid_desenvolvedor_web_UFSC#readme",
   "dependencies": {
     "axios": "^0.21.4",
     "express": "^4.17.1",
